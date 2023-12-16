@@ -1,0 +1,49 @@
+package caw;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Project_1 {
+
+	public static void main(String[] args) throws Throwable {
+		System.setProperty("webdriver.chrome.driver","F:\\JAVA OOPS\\Automation\\chromedriver-win64\\chromedriver.exe");
+		ChromeDriver driver=new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://www.saucedemo.com/");
+		String data=driver.findElement(By.xpath("//div[text()='Swag Labs']/..")).getText();
+        System.out.println(data);
+		Thread.sleep(3000);
+		
+		driver.findElement(By.id("user-name")).sendKeys("standard_user",Keys.TAB,"secret_sauce",Keys.ENTER);
+		String data1=driver.findElement(By.xpath("//span[text()='Name (A to Z)']")).getText();
+		System.out.println(data1);
+		driver.findElement(By.xpath("//div[text()='Products']/..")).isDisplayed();
+		driver.findElement(By.xpath("//div[text()='Price (high to low)']")).click();
+		driver.findElement(By.xpath("//div[text()='Products']/..")).isDisplayed();
+		driver.findElement(By.xpath("//div[text()='Sauce Labs Backpack']")).click();
+		driver.findElement(By.xpath("//button[text()='Add to cart']")).click();
+		driver.findElement(By.xpath("//div[text()='Sauce Labs Bike Light']")).click();
+		driver.findElement(By.xpath("//button[text()='Add to cart']")).click();
+		driver.findElement(By.xpath("div[text()='Sauce Labs Bolt T-Shirt']")).click();
+		driver.findElement(By.xpath("//button[text()='Add to cart']")).click();
+		driver.findElement(By.xpath("//span[text()='3']")).isDisplayed();
+		driver.findElement(By.className("shopping_cart_link")).click();
+		driver.findElement(By.xpath("//button[text()='Checkout']")).click();
+		driver.findElement(By.id("first-name")).isEnabled();
+		driver.findElement(By.id("last-name")).isEnabled();
+		driver.findElement(By.id("postal-code")).isEnabled();
+		driver.findElement(By.id("first-name")).sendKeys("sonu",Keys.TAB,"Sonam",Keys.TAB,"500016");
+		driver.findElement(By.id("continue")).click();
+		String data2=driver.findElement(By.xpath("//div[text()='Total: $60.45']")).getText();
+        System.out.println(data2);
+        driver.findElement(By.xpath("//button[text()='Finish']")).click();
+        driver.findElement(By.xpath("//h2[text()='Thank you for your order!']")).isDisplayed();
+        driver.findElement(By.xpath("//button[text()='Logout']")).click();
+      
+       
+		
+		
+		}
+
+}
