@@ -30,24 +30,24 @@ public class CawSDETClass {
 			System.out.println("Title not validated");
 		}
 				
-	    //Validate the usernames by checking whether they are correct or not
+	        //Validate the usernames by checking whether they are correct or not
 		WebElement userName = driver.findElement(By.xpath("//*[@id=\"user-name\"]"));
 		userName.click();
 		String[] usernames = {"standard_user", "problem_user", "performance_glitch_user", "error_user", "visual_user"};
 		Random rand = new Random();
 		int randomNum = rand.nextInt((4 - 0) + 0) + 0;
-	    userName.sendKeys(usernames[randomNum]);
+	        userName.sendKeys(usernames[randomNum]);
 		Thread.sleep(1500);
 		
-	    String testuser = userName.getText();
-	    if(testuser.equals(usernames[randomNum]))
-	    {
-	    	System.out.println("Valid username used");
-	    }
-	    else {
-	    	System.out.println("Invalid username");
-	    }
-	    
+	        String testuser = userName.getText();
+		    if(testuser.equals(usernames[randomNum]))
+		    {
+		    	System.out.println("Valid username used");
+		    }
+		    else {
+		    	System.out.println("Invalid username");
+		    }
+		
 		//Validate the password by checking whether its correct or not
 		WebElement passWord = driver.findElement(By.xpath("//*[@id=\"password\"]"));
 		passWord.click();
@@ -59,7 +59,7 @@ public class CawSDETClass {
 		loginButton.click();
 		
 		//Handle the password expiry or any other browser alert (if any)
-	    driver.switchTo().alert().dismiss();
+	        driver.switchTo().alert().dismiss();
 		
 		//Validate whether the sort dropdown is displayed
 		WebElement sortDropdown = driver.findElement(By.xpath("//*[@id=\"header_container\"]/div[2]/div/span/select"));
@@ -82,23 +82,24 @@ public class CawSDETClass {
 		Checkout.click();
 		
 		//Validate whether firstname, lastname and Zip code fields are editable
-        WebElement firstName = driver.findElement(By.xpath("//*[@id=\"first-name\"]"));
-        firstName.click();
-        Thread.sleep(1500);
-        
-        WebElement lastName = driver.findElement(By.xpath("//*[@id=\"last-name\"]"));
-        lastName.click();
-        Thread.sleep(1500);
-        
-        WebElement zipCode = driver.findElement(By.xpath("//*[@id=\"last-name\"]"));
-        zipCode.click();
-        Thread.sleep(1000);
-        
-        //Click on the sandwich menu on top left and logout, validate user is logged out
-        WebElement logOut = driver.findElement(By.xpath("//*[@id=\"logout_sidebar_link\"]"));
-        logOut.click();
+	        WebElement firstName = driver.findElement(By.xpath("//*[@id=\"first-name\"]"));
+	        firstName.click();
+	        Thread.sleep(1500);
+	        
+	        WebElement lastName = driver.findElement(By.xpath("//*[@id=\"last-name\"]"));
+	        lastName.click();
+	        Thread.sleep(1500);
+	        
+	        WebElement zipCode = driver.findElement(By.xpath("//*[@id=\"last-name\"]"));
+	        zipCode.click();
+	        Thread.sleep(1000);
+	        
+	        //Click on the sandwich menu on top left and logout, validate user is logged out
+	        WebElement logOut = driver.findElement(By.xpath("//*[@id=\"logout_sidebar_link\"]"));
+	        logOut.click();
+			
+	        driver.quit();
 		
-        driver.quit();
 	}
 	
 }
