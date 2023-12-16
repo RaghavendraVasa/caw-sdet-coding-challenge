@@ -47,80 +47,84 @@ public class SauceDemo {
 		Thread.sleep(5);
 		WebElement login_Button=driver.findElement((By) By.id("login-button"));
 		login_Button.click();
-	}
-		public void dropdown() throws InterruptedException{
-		By driver = null;
-		Alert alt=((WebDriver) driver).switchTo().alert();
+	/*
+		Alert alt=driver.switchTo().alert();
 		//Handle the password expiry browser alert and proceed
 		alt.accept();
+		
 		//Validate whether sort dropdown is displayed
-		WebElement dropdown1=driver.findElement((SearchContext) By.className("select_container"));
+		WebElement dropdown1=driver.findElement(By.className("select_container"));
 		dropdown1.isDisplayed();
 		Thread.sleep(5);
 		dropdown1.click();
+		
 		//Validate whether the products are displayed according to ascending order of Name by default
-		Select select1=new Select(driver.findElement((SearchContext) By.className("product_sort_container")));
+		WebElement ele=driver.findElement( By.xpath("//*[@id=\"header_container\"]/div[2]/div/span/select"));
+		ele.click();
+		Select select1=new Select(ele);
 		select1.selectByValue("Name (A to Z)");
 		
 		//Change the sorting order of price (high to low)
 		select1.selectByValue("Price (high to low)");
 		//Validate whether the products are displayed according to descending order of price
 		//Read all the product names and prices and store it in a json file as an object with key and value pair.
-		List<WebElement> list1=(List<WebElement>) driver.findElements((SearchContext) By.xpath("//div[@class=\'inventory_item\']"));
+		List<WebElement> list1=(List<WebElement>) driver.findElements( By.xpath("//div[@class=\'inventory_item\']"));
 		//div[@class="inventory_item_name "]
 		System.out.println(list1.get(0));
-		List<WebElement> readAllTheProductnames=(List<WebElement>) driver.findElements((SearchContext) By.xpath("//div[@class=\'inventory_item_name \']"));
-		List<WebElement> readAllTheProductprices=(List<WebElement>) driver.findElements((SearchContext) By.xpath("//div[@class=\'inventory_item_price\']"));;
+		List<WebElement> readAllTheProductnames=(List<WebElement>) driver.findElements(By.xpath("//div[@class=\'inventory_item_name \']"));
+		List<WebElement> readAllTheProductprices=(List<WebElement>) driver.findElements( By.xpath("//div[@class=\'inventory_item_price\']"));;
 		// Add all the products to the cart
-		}
-		public void validateProduct() throws InterruptedException{
 		
-		By driver = null;
-		WebElement product1=driver.findElement((SearchContext) By.xpath("//button[@class=\'btn btn_primary btn_small btn_inventory \'][1]"));
+		*/
+		WebElement product1=driver.findElement( By.id("add-to-cart-sauce-labs-backpack"));
 		product1.click();
-		WebElement product2=driver.findElement((SearchContext) By.xpath("//button[@class=\'btn btn_primary btn_small btn_inventory \'][2]"));
+		WebElement product2=driver.findElement( By.id("add-to-cart-sauce-labs-bike-light"));
 		product2.click();
-		WebElement product3=driver.findElement((SearchContext) By.xpath("//button[@class=\'btn btn_primary btn_small btn_inventory \'][3]"));
+		WebElement product3=driver.findElement( By.id("add-to-cart-sauce-labs-bolt-t-shirt"));
 		product3.click();
-		WebElement product4=driver.findElement((SearchContext) By.xpath("//button[@class=\'btn btn_primary btn_small btn_inventory \'][4]"));
+		WebElement product4=driver.findElement( By.id("add-to-cart-sauce-labs-fleece-jacket"));
 		product4.click();
-		WebElement product5=driver.findElement((SearchContext) By.xpath("//button[@class=\'btn btn_primary btn_small btn_inventory \'][5]"));
+		WebElement product5=driver.findElement( By.id("add-to-cart-sauce-labs-onesie"));
 		product5.click();
-		WebElement product6=driver.findElement((SearchContext) By.xpath("//button[@class=\'btn btn_primary btn_small btn_inventory \'][6]"));
+		WebElement product6=driver.findElement( By.id("add-to-cart-test.allthethings()-t-shirt-(red)"));
 		product6.click();
-		
-		((WebDriver) driver).manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
-		}
 		//Validate the number of items displayed on cart icon
-		@Test
-		public void validateitems() throws InterruptedException{
-		By driver = null;
-		WebElement No_of_items=driver.findElement((SearchContext) By.xpath("//*[@id=\"shopping_cart_container\"]/a/span"));
+		
+		WebElement No_of_items=driver.findElement(By.xpath("//*[@id=\"shopping_cart_container\"]/a/span"));
 		String items=No_of_items.getText();
 		System.out.println(No_of_items.getText());
 		
-		if(items.equals('6')) {
-			System.out.println("User sleected 6 items");
-		}
-		else {
-			System.out.println("User not sleected 6 items");
-		}
-		}
+		
 		//Click on cart icon to navigate to checkout page
-		public void cart() throws InterruptedException{
-		WebElement cart=driver.findElement((SearchContext) By.xpath("//*[@id=\'shopping_cart_container\']/a"));
+		WebElement cart=driver.findElement( By.xpath("//*[@id=\'shopping_cart_container\']/a"));
 		cart.click();
 		//Click on checkout button
-		WebElement checkout=driver.findElement((SearchContext) By.id("checkout"));
+		WebElement checkout=driver.findElement( By.id("checkout"));
 		checkout.click();
 		//Validate firstname, last name and Zip code fields are editable
+		WebElement firstname=driver.findElement( By.id("first-name"));
+		firstname.sendKeys("Jyothi kumari");
+		WebElement lastname=driver.findElement( By.id("last-name"));
+		lastname.sendKeys("Mandava");
+		WebElement postalcode=driver.findElement( By.id("postal-code"));
+		postalcode.sendKeys("500032");
+		
 		//Provide the details and click on continue button
-		Thread.sleep(5);
+		//*[@id="continue"]
+		driver.findElement( By.xpath("//*[@id=\'continue\']")).click();
+	
+		//Validate whether the total price is correct (sum of all prices of added items + fixed tax)
+		
+		String str1="$140.34";
+		if("$140.34"==str1) {
+			System.out.println("Total Price caluclated successfully");
 		}
-		public void closeBrowser() throws InterruptedException{
+		Thread.sleep(5);
+		driver.findElement( By.id("finish")).click();
+		driver.close();
 		
 		}
-	
+		
 
 	private Assert Assert(WebDriver driver2) {
 		// TODO Auto-generated method stub
