@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="14.648">
+    <testcase classname="As a user of the application i want to search product and sort search results in Amazon" name="search functionality" time="14.399">
+        <system-out><![CDATA[Given user is successfully naviaged to "https://www.amazon.in/".............passed
+When user enters "mobile" in searchbox in amazon............................passed
+And user click on searchbox in homepage.....................................passed
+And user waits for page to load.............................................passed
+Then search results should display..........................................passed
+When user sorts products from high to low...................................passed
+Then search results count should change.....................................passed
+]]></system-out>
+    </testcase>
+</testsuite>
