@@ -1,0 +1,14 @@
+{
+    "reportDir": "cypress/reports/mochawesome",
+    "reportFilename": "report",
+    "quiet": false,
+    "overwrite": false,
+    "timestamp": "yyyy-mm-dd HH:MM:ss",
+    "showPassed": true,
+    "showFailed": true,
+    "showPending": true,
+    "showSkipped": false,
+    "code": true,
+    "inlineAssets": true,
+    "autoOpen": false
+  }
